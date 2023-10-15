@@ -25,17 +25,63 @@ console.log(0.3 == currencyOperation(0.1, 0.2, '+')) // true*/
 //a
 let twentyCents = 0.20
 let tenCents = 0.10
-console.log(`${twentyCents} + ${tenCents} = ${twentyCents + tenCents}`)
+
+console.log(`${twentyCents} + ${tenCents} = ${twentyCents + tenCents}`);
 // 0.2 + 0.1 = 0.30000000000000004
+
 let fixedTwenty = twentyCents.toFixed(2);
 let fixedTen = tenCents.toFixed(2);
-console.log(fixedTwenty + fixedTen) //why is this not working? not safe to add decimals. syntax? requires parsefloat integer?
+
+console.log(fixedTwenty + fixedTen) //why is this not working? not the usual numerical expressions rather than use strings
 
 //b
 function currencyAddition(float1, float2){
-    var float1 =  fixedTwenty.toFixed(2);
-    var float2 =  fixedTen.toFixed(2);
+    let wholeNumber1 =float1 * 100;
+    let wholeNumber2 =float2 * 100;;
     
-    return float1 + float2;
+    return (wholeNumber1 + wholeNumber2) / 100;
 }
-console.log(0.20 + 0.10);
+
+//c 
+function currencyOperation (float1, float2, operation){
+    let wholeNumber1 = float1 * 100;
+    let wholeNumber2 = float2 * 100;
+    let wholeResult = 0;
+    switch (operation){
+        case "+":
+        wholeResult = wholeNumber1 + wholeNumber2;
+        break;
+        case "*":
+         wholeResult = wholeNumber1 * wholeNumber2;
+        break;
+        default: 
+        wholeResult = wholeNumber1 + wholeNumber2;
+    }
+}
+
+//d 
+
+function currencyOperation (float1, float2, numDecimals){
+    let factor = 10 ** numDecimals; //exponential for numDecimals=2 would be 10 to the power of 2, or 10*10
+    let wholeNumber1 = float1 * factor;
+    let wholeNumber2 = float2 * factor;
+    let wholeResult = 0;
+    switch (operation){
+        case "+":
+        wholeResult = wholeNumber1 + wholeNumber2;
+        break;
+        case "*":
+         wholeResult = wholeNumber1 * wholeNumber2;
+        break;
+        case "/":
+         wholeResult = wholeNumber1 / wholeNumber2;
+        break;
+        case "-":
+        wholeResult = wholeNumber1 - wholeNumber2;
+        break;
+        default: 
+        wholeResult = wholeNumber1 + wholeNumber2;
+    }
+    // rounds off any remainining decimals and divid by the factor multiplied by above
+    return Math.round(wholeResult) / factor;
+}

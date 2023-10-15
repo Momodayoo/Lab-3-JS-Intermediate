@@ -12,48 +12,33 @@ regardless of upper/lower case. */
 
 const animals = ['Tiger', 'Giraffe']
 console.log(animals)
+
 //a
 animals.push ('Whale, Dolphin')
 console.log (animals)
+
 //b 
-animals.unshift ('Snake, Lion')
+animals.unshift ('Snake');
+animals.unshift ('Lion');
 console.log (animals)
 //c
 
-let animal = [ 'Snake', 'Lion', 'Tiger', 'Giraffe', 'Whale', 'Dolphin' ]
-animal.sort (function (a, b) {
-    return a.length - b.length;
-});
-console.log( animal);
+animals.sort ();
+console.log( animals);
 //d 
 function replaceMiddleAnimal(newValue) {
-
-    const list = [
-        "Snake",
-        "Lion",
-        "Tiger",
-        "Giraffe",
-        'Whale',
-        "Dolphin"
-    ];
-
-    list.splice (2, 1, "Turtle");
-
-    console.log (list);
-}
-replaceMiddleAnimal();
+       
+    let halfway = animals.length/2;
+    animals [halfway] = newValue
+ }
+replaceMiddleAnimal ("Turtle");
+console.log (animals);
 
 //e  
 
 function findMatchingAnimal(beginsWith) {
-    
-    const list = [
-        { id: 1, Animal: 'Snake', type: 'reptile', limb: 0 },
-        { id: 2, Animal: 'Lion', type: 'mammal', limb: 4 }, 
-        { id: 3, Animal: 'Tiger', type: 'mammal', limb: 4 },
-        { id: 4, Animal: 'Giraffe', type: 'mammal', limb: 4},
-        { id: 5, Animal: 'Whale', type: 'mammal', limb: 0},
-        { id: 6, Animal: 'Dolphin', type: 'mammal', limb: 0}]
-    }
-       const object = list.find (obj => obj.id === 3);
-console.log (object)
+    return animals.filter ((animals) => 
+        animals.toLowerCase().startswith(beginsWith.toLowerCase())
+    );
+}
+    console.log (findMatchingAnimal("s"));
