@@ -22,11 +22,10 @@ const books = [
     ];
 //a
     function getBookTitle (bookId){
-        return bookId;
-        let matchingBook = books.find (books => books.id = bookId)
+        let matchingBook = books.find (books => books.id == bookId)
         return matchingBook.title;
     }
-    console.log(getBookTitle(3))
+    console.log(getBookTitle(2))
 
 //b 
     function getOldBooks (){
